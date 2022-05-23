@@ -1,5 +1,5 @@
 <template>
-  <div id="container" @mousedown="show" @mouseup="hide" @dragstart="show" @dragend="hide">
+  <div id="container" @touchstart="show" @touchend="hide" @mousedown="show" @mouseup="hide" @dragstart="show" @dragend="hide">
     <img ref="image" :src="url" :style="imageStyle">
     <div class="blind" v-show="blind"></div>
     <div class="circle" :style="circleStyle" v-show="blind"></div>
@@ -64,16 +64,25 @@ export default {
       this.loaded = true
     },
 
-    toggle() {
+    toggle(event) {
       this.blind = !this.blind
+
+      event.preventDefault()
+      return false
     },
 
-    show() {
+    show(event) {
       this.blind = false
+
+      event.preventDefault()
+      return false
     },
 
-    hide() {
+    hide(event) {
       this.blind = true
+
+      event.preventDefault()
+      return false
     }
   },
 
@@ -89,7 +98,7 @@ export default {
 
 <style scoped>
 #container {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   bottom: 0;
@@ -97,22 +106,25 @@ export default {
   background-color: #000000;
 }
 img {
-  position: absolute;
+  position: fixed;
   z-index: 1;
+
 }
 
 .blind {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   bottom: 0;
   right: 0;
+  width: 100vw;
+  height: 100vh;
   background-color: #000000;
   z-index: 10;
 }
 
 .circle {
-  position: absolute;
+  position: fixed;
   width: 10px;
   height: 10px;
   border-radius: 50%;
@@ -121,7 +133,7 @@ img {
 }
 
 .instructions {
-  position: absolute;
+  position: fixed;
   left: 0;
   bottom: 0;
   right: 0;

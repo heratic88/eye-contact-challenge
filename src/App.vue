@@ -1,6 +1,6 @@
 <template>
   <div>
-    <ImageViewer url="https://i.redd.it/hugrcgzto7x71.jpg" x="562" y="406" />
+    <ImageViewer url="https://i.imgur.com/Qr72ZMm.jpg" x="572" y="452" />
   </div>
 </template>
 
