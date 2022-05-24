@@ -2,8 +2,9 @@
   <div id="container" @touchstart="show" @touchend="hide" @mousedown="show" @mouseup="hide" @dragstart="show" @dragend="hide">
     <img ref="image" :src="url" :style="imageStyle">
     <div class="blind" v-show="blind"></div>
-    <div class="circle" :style="circleStyle" v-show="blind"></div>
-    <div class="instructions" v-show="blind">Keep your eyes on the red dot and tap and hold to view the image</div>
+    <div class="circle" :style="circleStyle" v-show="loaded && blind"></div>
+    <div class="instructions" v-show="!loaded">Loading, please wait</div>
+    <div class="instructions" v-show="loaded && blind">Keep your eyes on the red dot and tap and hold to view the image</div>
   </div>
 </template>
 
