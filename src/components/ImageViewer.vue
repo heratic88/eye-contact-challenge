@@ -51,11 +51,10 @@ export default {
 
       const position = this.image.getBoundingClientRect()
 
-      const y = position.y + parseInt(this.y) * this.scale
-      const x = position.x + parseInt(this.x) * this.scale
+      const x = position.x + parseInt(this.x) * this.scale - 5
+      const y = position.y + parseInt(this.y) * this.scale - 5
 
       return `left: ${x}px; top: ${y}px`
-
     }
   },
 
